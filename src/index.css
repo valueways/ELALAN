@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #0A0A0A;
+  --color-limestone: #F5F5F5;
+  --color-bronze: #B8860B;
+  --color-steel: #4A4A4A;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --spacing-48: 12rem;
+}
+
+@layer base {
+  body {
+    @apply bg-obsidian text-limestone font-sans selection:bg-bronze selection:text-obsidian overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display uppercase tracking-tighter;
+  }
+}
+
+@layer utilities {
+  .grain-overlay {
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    filter: contrast(150%) brightness(100%);
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px rgba(245, 245, 245, 0.2);
+    color: transparent;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #B8860B;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor.hovering {
+  width: 80px;
+  height: 80px;
+  background: rgba(184, 134, 11, 0.1);
+  border-width: 2px;
+}
+
